@@ -7,19 +7,19 @@ use Test::FailWarnings;
 
 use Finance::Exchange;
 
+my @exchanges = (
+    'ICE_LIFFE',    'EEI_PA',      'BIS',         'NYSE_SPC',        'EGX',         'KRX',    'SYNFSE', 'BSE',
+    'HKF',          'BOVESPA',     'SWX',         'TRSE',            'EURONEXT',    'SYNTSE', 'RANDOM', 'TSE_S',
+    'TSE',          'OSLO',        'LSE',         'SES',             'SYNLSE',      'EEI_BU', 'SFE',    'SAS',
+    'EUREX',        'SYNNYSE_SPC', 'ISE',         'NSE',             'KSE',         'STOXX',  'SGX',    'EEI_AM',
+    'BI',           'FSE',         'MEFF',        'ASX_S',           'SYNEURONEXT', 'NYSE',   'MOF',    'BMF',
+    'NASDAQ_INDEX', 'EEI_LI',      'CME',         'ASX',             'OMX',         'FOREX',  'DFM',    'ADS',
+    'SYNSTOXX',     'SZSE',        'SYNSWX',      'RTS',             'JSC',         'METAL',  'OSE',    'FS',
+    'NZSE',         'ODLS',        'SP_GLOBAL',   'JSE',             'NASDAQ',      'BM',     'HKSE',   'MICEX',
+    'SYNNYSE_DJI',  'SP_GSCI',     'EUREX_SWISS', 'RANDOM_NOCTURNE', 'IDM',         'SSE',
+);
 subtest 'exchange object construction' => sub {
-    my @valid_symbols = (
-        'ICE_LIFFE',    'EEI_PA',      'BIS',         'NYSE_SPC',        'EGX',         'KRX',    'SYNFSE', 'BSE',
-        'HKF',          'BOVESPA',     'SWX',         'TRSE',            'EURONEXT',    'SYNTSE', 'RANDOM', 'TSE_S',
-        'TSE',          'OSLO',        'LSE',         'SES',             'SYNLSE',      'EEI_BU', 'SFE',    'SAS',
-        'EUREX',        'SYNNYSE_SPC', 'ISE',         'NSE',             'KSE',         'STOXX',  'SGX',    'EEI_AM',
-        'BI',           'FSE',         'MEFF',        'ASX_S',           'SYNEURONEXT', 'NYSE',   'MOF',    'BMF',
-        'NASDAQ_INDEX', 'EEI_LI',      'CME',         'ASX',             'OMX',         'FOREX',  'DFM',    'ADS',
-        'SYNSTOXX',     'SZSE',        'SYNSWX',      'RTS',             'JSC',         'METAL',  'OSE',    'FS',
-        'NZSE',         'ODLS',        'SP_GLOBAL',   'JSE',             'NASDAQ',      'BM',     'HKSE',   'MICEX',
-        'SYNNYSE_DJI',  'SP_GSCI',     'EUREX_SWISS', 'RANDOM_NOCTURNE', 'IDM',         'SSE',
-    );
-    foreach my $exchange_symbol (@valid_symbols) {
+    foreach my $exchange_symbol (@exchanges) {
         lives_ok { Finance::Exchange->create_exchange('ASX') } 'can create an exchange object for ' . $exchange_symbol;
     }
     throws_ok { Finance::Exchange->create_exchange('unknown') } qr/Config for exchange\[unknown\] not specified in exchange.yml/,
@@ -42,7 +42,7 @@ subtest 'trading_days' => sub {
         ],
     };
 
-    foreach my $ex (map { Finance::Exchange->create_exchange($_) } keys %$exchanges) {
+    foreach my $ex (map { Finance::Exchange->create_exchange($_) } @exchanges) {
         unless ($expected->{$ex->trading_days}) {
             fail('unknown trading days ' . $ex->trading_days);
         } else {
@@ -92,7 +92,7 @@ subtest 'exchange currency' => sub {
         RANDOM_NOCTURNE => 1
     );
 
-    foreach my $ex (map { Finance::Exchange->create_exchange($_) } keys %$exchanges) {
+    foreach my $ex (map { Finance::Exchange->create_exchange($_) } @exchanges) {
         if (not $ex->currency and exists $undef_currency_exchanges{$ex->symbol}) {
             pass('Currency is undefined for ' . $ex->symbol);
         } elsif (
