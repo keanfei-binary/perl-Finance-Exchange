@@ -6,11 +6,18 @@ use 5.010000;
 
 use ExtUtils::MakeMaker 6.48;
 
+use File::ShareDir::Install;
+$File::ShareDir::Install::INCLUDE_DOTFILES = 1;
+$File::ShareDir::Install::INCLUDE_DOTDIRS = 1;
+install_share dist => "share";
+
+
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "A module to load exchange information from exchange.yml and exchanges_trading_days_aliases.yml.",
+  "ABSTRACT" => "represents a financial stock exchange object.",
   "AUTHOR" => "binary.com <cpan\@binary.com>",
   "CONFIGURE_REQUIRES" => {
-    "ExtUtils::MakeMaker" => "6.48"
+    "ExtUtils::MakeMaker" => "6.48",
+    "File::ShareDir::Install" => "0.06"
   },
   "DISTNAME" => "Finance-Exchange",
   "LICENSE" => "perl",
@@ -29,6 +36,7 @@ my %WriteMakefileArgs = (
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
     "Test::CheckDeps" => "0.010",
+    "Test::Exception" => 0,
     "Test::FailWarnings" => "0.008",
     "Test::More" => "0.98",
     "Test::Most" => "0.34"
@@ -49,6 +57,7 @@ my %FallbackPrereqs = (
   "IPC::Open3" => 0,
   "Moose" => 0,
   "Test::CheckDeps" => "0.010",
+  "Test::Exception" => 0,
   "Test::FailWarnings" => "0.008",
   "Test::More" => "0.98",
   "Test::Most" => "0.34",
@@ -67,3 +76,9 @@ delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
   unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
 
 WriteMakefile(%WriteMakefileArgs);
+
+{
+package
+MY;
+use File::ShareDir::Install qw(postamble);
+}
