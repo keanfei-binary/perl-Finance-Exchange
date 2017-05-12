@@ -45,6 +45,12 @@ BEGIN {
     $trading_day_aliases = YAML::XS::LoadFile(File::ShareDir::dist_file('Finance-Exchange', 'exchanges_trading_days_aliases.yml'));
 }
 
+=head2 create_exchange
+
+Exchange object constructor.
+
+=cut
+
 sub create_exchange {
     my ($class, $symbol) = @_;
 
