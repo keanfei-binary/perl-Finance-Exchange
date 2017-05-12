@@ -41,8 +41,8 @@ This is a generic representation of a financial stock exchange.
 my ($cached_objects, $exchange_config, $trading_day_aliases);
 
 BEGIN {
-    $exchange_config     = YAML::XS::LoadFile(File::ShareDir::dist_file('Quant-Framework', 'exchange.yml'));
-    $trading_day_aliases = YAML::XS::LoadFile(File::ShareDir::dist_file('Quant-Framework', 'exchanges_trading_days_aliases.yml'));
+    $exchange_config     = YAML::XS::LoadFile(File::ShareDir::dist_file('Finance-Exchange', 'exchange.yml'));
+    $trading_day_aliases = YAML::XS::LoadFile(File::ShareDir::dist_file('Finance-Exchange', 'exchanges_trading_days_aliases.yml'));
 }
 
 sub create_exchange {
