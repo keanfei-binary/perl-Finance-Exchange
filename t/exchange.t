@@ -20,9 +20,9 @@ subtest 'exchange object construction' => sub {
         'SYNNYSE_DJI',  'SP_GSCI',     'EUREX_SWISS', 'RANDOM_NOCTURNE', 'IDM',         'SSE',
     );
     foreach my $exchange_symbol (@valid_symbols) {
-        lives_ok { Quant::Framework::Exchange->create_exchange('ASX') } 'can create an exchange object for ' . $exchange_symbol;
+        lives_ok { Finance::Exchange->create_exchange('ASX') } 'can create an exchange object for ' . $exchange_symbol;
     }
-    throws_ok { Quant::Framework::Exchange->create_exchange('unknown') } qr/Config for exchange\[unknown\] not specified in exchange.yml/,
+    throws_ok { Finance::Exchange->create_exchange('unknown') } qr/Config for exchange\[unknown\] not specified in exchange.yml/,
         'throws error if exchange symbol is unknown';
 };
 
@@ -42,7 +42,7 @@ subtest 'trading_days' => sub {
         ],
     };
 
-    foreach my $ex (map { Quant::Framework::Exchange->create_exchange($_) } keys %$exchanges) {
+    foreach my $ex (map { Finance::Exchange->create_exchange($_) } keys %$exchanges) {
         unless ($expected->{$ex->trading_days}) {
             fail('unknown trading days ' . $ex->trading_days);
         } else {
@@ -92,7 +92,7 @@ subtest 'exchange currency' => sub {
         RANDOM_NOCTURNE => 1
     );
 
-    foreach my $ex (map { Quant::Framework::Exchange->create_exchange($_) } keys %$exchanges) {
+    foreach my $ex (map { Finance::Exchange->create_exchange($_) } keys %$exchanges) {
         if (not $ex->currency and exists $undef_currency_exchanges{$ex->symbol}) {
             pass('Currency is undefined for ' . $ex->symbol);
         } elsif (
@@ -126,7 +126,7 @@ subtest 'market_times' => sub {
             daily_settlement => 9 * 3600,
         },
     };
-    my $asx = Quant::Framework::Exchange->create_exchange('ASX');
+    my $asx = Finance::Exchange->create_exchange('ASX');
     foreach my $key (keys %{$asx->market_times}) {
         foreach my $key2 (keys %{$asx->market_times->{$key}}) {
             is $asx->market_times->{$key}->{$key2}->seconds, $expected->{$key}->{$key2}, 'market times matches';
@@ -135,9 +135,9 @@ subtest 'market_times' => sub {
 };
 
 subtest 'exchange object caching' => sub {
-    my $obj1 = Quant::Framework::Exchange->create_exchange('ASX');
-    my $obj2 = Quant::Framework::Exchange->create_exchange('ASX');
-    my $obj3 = Quant::Framework::Exchange->create_exchange('FOREX');
+    my $obj1 = Finance::Exchange->create_exchange('ASX');
+    my $obj2 = Finance::Exchange->create_exchange('ASX');
+    my $obj3 = Finance::Exchange->create_exchange('FOREX');
 
     is $obj1,   $obj2, 'cached';
     isnt $obj1, $obj3, 'returns a different object for FOREX';
