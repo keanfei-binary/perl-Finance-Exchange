@@ -25,6 +25,10 @@ This is a generic representation of a financial stock exchange.
     $exchange->display_name;
     ...
 
+## create\_exchange
+
+Exchange object constructor.
+
 # ATTRIBUTES
 
 ## symbol
