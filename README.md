@@ -20,9 +20,17 @@ This is a generic representation of a financial stock exchange.
 ## USAGE
 
     my $exchange = Finance::Exchange->create_exchange('LSE');
-    $exchange->trading_timezone;
-    $exchange->market_times;
-    $exchange->display_name;
+    is $exchange->symbol, 'LSE';
+    is $exchange->display_name, 'London Stock Exchange';
+    is $exchange->trading_days, 'weekdays';
+    is $exchange->trading_timezone, 'Europe/London';
+    # The list of days starts on Sunday and is a set of flags indicating whether
+    # we trade on that day or not
+    is $exchange->trading_days_list, [ 0, 1, 1, 1, 1, 1, 0 ];
+    is $exchange->market_times, { ... };
+    is $exchange->delay_amount, 15, 'LSE minimum delay is 15 minutes';
+    is $exchange->currency, 'GBP', 'LSE is traded in pound sterling';
+    is $exchange->trading_date_can_differ, 0, 'only applies to AU/NZ';
     ...
 
 ## create\_exchange
@@ -31,13 +39,13 @@ Exchange object constructor.
 
 # ATTRIBUTES
 
-## symbol
-
-Exchange symbol, e.g. LSE to represent London Stocks Exchange.
-
 ## display\_name
 
 Exchange display name, e.g. London Stock Exchange.
+
+## symbol
+
+Exchange symbol, e.g. LSE to represent London Stocks Exchange.
 
 ## trading\_days
 
@@ -78,7 +86,7 @@ The trading times are broken into three categories:
 
 ## delay\_amount
 
-The acceptable delay amount of feed on this exchange. Default to 60 seconds.
+The acceptable delay amount of feed on this exchange, in minutes. Default is 60 minutes.
 
 ## currency
 
