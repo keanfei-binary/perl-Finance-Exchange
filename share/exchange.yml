@@ -33,6 +33,26 @@ ASX:
   symbol: ASX
   trading_days: weekdays
   trading_timezone: Australia/Sydney
+ASX_OTC:
+  currency: AUD
+  delay_amount: '0'
+  display_name: OTC Australia Stock Exchange
+  market_times:
+    dst:
+      daily_close: 20h
+      daily_open: -1h
+      daily_settlement: 22h
+    partial_trading: {}
+    trading_breaks:
+      - - 5h30m
+        - 06h10m
+    standard:
+      daily_close: 21h
+      daily_open: 0s
+      daily_settlement: 23h
+  symbol: ASX_OTC
+  trading_days: weekdays
+  trading_timezone: Australia/Sydney
 ASX_S:
   currency: AUD
   delay_amount: '20'
@@ -117,6 +137,23 @@ BM:
       daily_open: 8h
       daily_settlement: 19h30m
   symbol: BM
+  trading_days: weekdays
+  trading_timezone: Europe/Madrid
+BM_OTC:
+  currency: EUR
+  delay_amount: '0'
+  display_name: OTC Borsa Madrid
+  market_times:
+    dst:
+      daily_close: 18h
+      daily_open: 6h
+      daily_settlement: 20h
+    partial_trading: {}
+    standard:
+      daily_close: 19h
+      daily_open: 7h
+      daily_settlement: 21h
+  symbol: BM_OTC
   trading_days: weekdays
   trading_timezone: Europe/Madrid
 BMF:
@@ -352,6 +389,23 @@ EURONEXT:
   symbol: EURONEXT
   trading_days: weekdays
   trading_timezone: Europe/Paris
+EURONEXT_OTC:
+  currency: EUR
+  delay_amount: '0'
+  display_name: OTC EURONEXT
+  market_times:
+    dst:
+      daily_close: 20h
+      daily_open: 6h
+      daily_settlement: 22h
+    partial_trading: {}
+    standard:
+      daily_close: 21h
+      daily_open: 7h
+      daily_settlement: 23h
+  symbol: EURONEXT_OTC
+  trading_days: weekdays
+  trading_timezone: Europe/Paris
 FOREX:
   delay_amount: '0'
   display_name: Forex
@@ -414,6 +468,23 @@ FSE:
       daily_open: 8h
       daily_settlement: 19h30m
   symbol: FSE
+  trading_days: weekdays
+  trading_timezone: Europe/Berlin
+FSE_OTC:
+  currency: EUR
+  delay_amount: '0'
+  display_name: OTC Frankfurt Stock Exchange
+  market_times:
+    dst:
+      daily_close: 19h30m
+      daily_open: 6h
+      daily_settlement: 22h
+    partial_trading: {}
+    standard:
+      daily_close: 20h30m
+      daily_open: 7h
+      daily_settlement: 23h
+  symbol: FSE_OTC
   trading_days: weekdays
   trading_timezone: Europe/Berlin
 HKF:
@@ -548,6 +619,23 @@ JSE:
   symbol: JSE
   trading_days: weekdays
   trading_timezone: Africa/Johannesburg
+JSE_OTC:
+  currency: ZAR
+  delay_amount: '0'
+  display_name: OTC Johannesburg Stock Exchange
+  market_times:
+    dst:
+      daily_close: 14h30m
+      daily_open: 5h30m
+      daily_settlement: 17h30m
+    partial_trading: {}
+    standard:
+      daily_close: 15h30m
+      daily_open: 6h30m
+      daily_settlement: 18h30m
+  symbol: JSE_OTC
+  trading_days: weekdays
+  trading_timezone: Africa/Johannesburg
 KRX:
   currency: KRW
   delay_amount: '1440'
@@ -595,6 +683,23 @@ LSE:
       daily_open: 8h
       daily_settlement: 19h30m
   symbol: LSE
+  trading_days: weekdays
+  trading_timezone: Europe/London
+LSE_OTC:
+  currency: GBP
+  delay_amount: '0'
+  display_name: OTC London Stock Exchange
+  market_times:
+    dst:
+      daily_close: 19h
+      daily_open: -1h
+      daily_settlement: 22h
+    partial_trading: {}
+    standard:
+      daily_close: 20h
+      daily_open: 0s
+      daily_settlement: 23h
+  symbol: LSE_OTC
   trading_days: weekdays
   trading_timezone: Europe/London
 MICEX:
@@ -697,6 +802,23 @@ NSE:
   symbol: NSE
   trading_days: weekdays
   trading_timezone: Asia/Calcutta
+NSE_OTC:
+  currency: INR
+  delay_amount: '0'
+  display_name: OTC India National Stock Exchange
+  market_times:
+    dst:
+      daily_close: 9h
+      daily_open: 0s
+      daily_settlement: 12h
+    partial_trading: {}
+    standard:
+      daily_close: 10h
+      daily_open: 1h
+      daily_settlement: 13h
+  symbol: NSE_OTC
+  trading_days: weekdays
+  trading_timezone: Asia/Calcutta
 NYSE:
   currency: USD
   delay_amount: '1440'
@@ -718,6 +840,23 @@ NYSE:
   symbol: NYSE
   trading_days: weekdays
   trading_timezone: America/New_York
+NYSE_OTC:
+  currency: USD
+  delay_amount: '0'
+  display_name: OTC New York Stock Exchange
+  market_times:
+    dst:
+      daily_close: 20h
+      daily_open: -1h
+      daily_settlement: 22h
+    partial_trading: {}
+    standard:
+      daily_close: 21h
+      daily_open: 0s
+      daily_settlement: 23h
+  symbol: NYSE_OTC
+  trading_days: weekdays
+  trading_timezone: America/New_York
 NYSE_SPC:
   currency: USD
   delay_amount: '1440'
@@ -737,6 +876,23 @@ NYSE_SPC:
       daily_open: 14h30m
       daily_settlement: 23h59m59s
   symbol: NYSE_SPC
+  trading_days: weekdays
+  trading_timezone: America/New_York
+NYSE_SPC_OTC:
+  currency: USD
+  delay_amount: '0'
+  display_name: OTC New York Stock Exchange
+  market_times:
+    dst:
+      daily_close: 20h
+      daily_open: -1h
+      daily_settlement: 22h
+    partial_trading: {}
+    standard:
+      daily_close: 21h
+      daily_open: 0s
+      daily_settlement: 23h
+  symbol: NYSE_SPC_OTC
   trading_days: weekdays
   trading_timezone: America/New_York
 NZSE:
@@ -1018,6 +1174,23 @@ STOXX:
   symbol: STOXX
   trading_days: weekdays
   trading_timezone: Europe/Berlin
+STOXX_OTC:
+  currency: EUR
+  delay_amount: '0'
+  display_name: OTC STOXX Exchange
+  market_times:
+    dst:
+      daily_close: 20h
+      daily_open: 6h
+      daily_settlement: 22h
+    partial_trading: {}
+    standard:
+      daily_close: 21h
+      daily_open: 7h
+      daily_settlement: 23h
+  symbol: STOXX_OTC
+  trading_days: weekdays
+  trading_timezone: Europe/Berlin
 SWX:
   currency: CHF
   delay_amount: '1440'
@@ -1225,6 +1398,23 @@ TRSE:
   symbol: TRSE
   trading_days: weekdays
   trading_timezone: America/Toronto
+TRSE_OTC:
+  currency: CAD
+  delay_amount: '0'
+  display_name: OTC Toronto Stock Exchange
+  market_times:
+    dst:
+      daily_close: 19h15m
+      daily_open: 12h30m
+      daily_settlement: 22h30m
+    partial_trading: {}
+    standard:
+      daily_close: 20h15m
+      daily_open: 13h30m
+      daily_settlement: 23h30m
+  symbol: TRSE_OTC
+  trading_days: weekdays
+  trading_timezone: America/Toronto
 TSE:
   currency: JPY
   delay_amount: '1440'
@@ -1239,6 +1429,23 @@ TSE:
       - - 2h30m
         - 3h30m
   symbol: TSE
+  trading_days: weekdays
+  trading_timezone: Asia/Tokyo
+TSE_OTC:
+  currency: JPY
+  delay_amount: '0'
+  display_name: OTC Tokyo Stock Exchange
+  market_times:
+    dst:
+      daily_close: 20h
+      daily_open: -1h
+      daily_settlement: 22h
+    partial_trading: {}
+    standard:
+      daily_close: 21h
+      daily_open: 0s
+      daily_settlement: 23h
+  symbol: TSE_OTC
   trading_days: weekdays
   trading_timezone: Asia/Tokyo
 TSE_S:
