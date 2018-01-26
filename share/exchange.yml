@@ -39,20 +39,20 @@ ASX_OTC:
   display_name: OTC Australia Stock Exchange
   market_times:
     dst:
-      daily_close: 20h
+      daily_close: 21h
       daily_open: -1h
       daily_settlement: 22h
       trading_breaks:
-      - - 4h30m
-        - 5h10m
-    partial_trading: {}
-    standard:
-      daily_close: 21h
-      daily_open: 0s
-      daily_settlement: 23h
-      trading_breaks:
       - - 5h30m
         - 6h10m
+    partial_trading: {}
+    standard:
+      daily_close: 20h
+      daily_open: -2h
+      daily_settlement: 23h
+      trading_breaks:
+      - - 4h30m
+        - 5h10m
   symbol: ASX_OTC
   trading_days: weekdays
   trading_timezone: Australia/Sydney
