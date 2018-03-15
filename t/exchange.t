@@ -109,27 +109,53 @@ subtest 'exchange currency' => sub {
 
 subtest 'market_times' => sub {
     my $expected = {
-        dst => {
-            daily_close      => 5 * 3600,
-            daily_open       => -1 * 3600,
-            daily_settlement => 8 * 3600,
+        'ASX' => {
+            dst => {
+                daily_close      => 5 * 3600,
+                daily_open       => -1 * 3600,
+                daily_settlement => 8 * 3600,
+            },
+            partial_trading => {
+                dst_close      => 3 * 3600 + 10 * 60,
+                dst_open       => -1 * 3600,
+                standard_close => 4 * 3600 + 10 * 60,
+                standard_open  => 0,
+            },
+            standard => {
+                daily_close      => 6 * 3600,
+                daily_open       => 0,
+                daily_settlement => 9 * 3600,
+            },
         },
-        partial_trading => {
-            dst_close      => 3 * 3600 + 10 * 60,
-            dst_open       => -1 * 3600,
-            standard_close => 4 * 3600 + 10 * 60,
-            standard_open  => 0,
+        'ASX_OTC' => {
+            dst => {
+                daily_close      => 21 * 3600,
+                daily_open       => -1 * 3600,
+                daily_settlement => 23 * 3600,
+                trading_breaks   => [5 * 3600 + 30 * 60, 6 * 3600 + 10 * 60],
+            },
+            standard => {
+                daily_close      => 20 * 3600,
+                daily_open       => -2 * 3600,
+                daily_settlement => 22 * 3600,
+                trading_breaks   => [4 * 3600 + 30 * 60, 5 * 3600 + 10 * 60],
+            },
         },
-        standard => {
-            daily_close      => 6 * 3600,
-            daily_open       => 0,
-            daily_settlement => 9 * 3600,
-        },
+
     };
-    my $asx = Finance::Exchange->create_exchange('ASX');
-    foreach my $key (keys %{$asx->market_times}) {
-        foreach my $key2 (keys %{$asx->market_times->{$key}}) {
-            is $asx->market_times->{$key}->{$key2}->seconds, $expected->{$key}->{$key2}, 'market times matches';
+
+    foreach my $exchange (keys %{$expected}) {
+        my $asx = Finance::Exchange->create_exchange($exchange);
+        foreach my $key (keys %{$asx->market_times}) {
+            foreach my $key2 (keys %{$asx->market_times->{$key}}) {
+                if ($key2 eq 'trading_breaks') {
+                    is $asx->market_times->{$key}->{$key2}[0][0]->seconds, $expected->{$exchange}->{$key}->{$key2}[0], 'trading breaks matches';
+                    is $asx->market_times->{$key}->{$key2}[0][1]->seconds, $expected->{$exchange}->{$key}->{$key2}[1], 'trading breaks matches';
+
+                } else {
+                    is $asx->market_times->{$key}->{$key2}->seconds, $expected->{$exchange}->{$key}->{$key2}, 'market times matches';
+                }
+            }
         }
     }
 };

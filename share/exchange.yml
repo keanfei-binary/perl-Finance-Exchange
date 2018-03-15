@@ -41,7 +41,7 @@ ASX_OTC:
     dst:
       daily_close: 21h
       daily_open: -1h
-      daily_settlement: 22h
+      daily_settlement: 23h
       trading_breaks:
       - - 5h30m
         - 6h10m
@@ -49,7 +49,7 @@ ASX_OTC:
     standard:
       daily_close: 20h
       daily_open: -2h
-      daily_settlement: 23h
+      daily_settlement: 22h
       trading_breaks:
       - - 4h30m
         - 5h10m
