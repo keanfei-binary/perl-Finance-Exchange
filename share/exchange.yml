@@ -39,20 +39,20 @@ ASX_OTC:
   display_name: OTC Australia Stock Exchange
   market_times:
     dst:
-      daily_close: 21h
-      daily_open: -1h
-      daily_settlement: 23h
+      daily_close: 19h
+      daily_open: 0s
+      daily_settlement: 21h
       trading_breaks:
       - - 5h30m
-        - 6h10m
+        - 6h30m
     partial_trading: {}
     standard:
       daily_close: 20h
-      daily_open: -2h
+      daily_open: 0s
       daily_settlement: 22h
       trading_breaks:
-      - - 4h30m
-        - 5h10m
+      - - 6h30m
+        - 7h30m
   symbol: ASX_OTC
   trading_days: weekdays
   trading_timezone: Australia/Sydney
@@ -148,14 +148,14 @@ BM_OTC:
   display_name: OTC Borsa Madrid
   market_times:
     dst:
-      daily_close: 18h
+      daily_close: 17h
       daily_open: 6h
-      daily_settlement: 20h
+      daily_settlement: 19h
     partial_trading: {}
     standard:
-      daily_close: 19h
+      daily_close: 18h
       daily_open: 7h
-      daily_settlement: 21h
+      daily_settlement: 20h
   symbol: BM_OTC
   trading_days: weekdays
   trading_timezone: Europe/Madrid
@@ -479,12 +479,12 @@ FSE_OTC:
   display_name: OTC Frankfurt Stock Exchange
   market_times:
     dst:
-      daily_close: 19h30m
+      daily_close: 20h
       daily_open: 6h
       daily_settlement: 22h
     partial_trading: {}
     standard:
-      daily_close: 20h30m
+      daily_close: 21h
       daily_open: 7h
       daily_settlement: 23h
   symbol: FSE_OTC
@@ -523,6 +523,24 @@ HKSE:
       - - 3h59m
         - 5h00m
   symbol: HKSE
+  trading_days: weekdays
+  trading_timezone: Asia/Hong_Kong
+HKSE_OTC:
+  currency: HKD
+  delay_amount: '0'
+  display_name: OTC Hong Kong Stock Exchange
+  market_times:
+    partial_trading:
+      standard_close: 4h
+      standard_open: 1h30m
+    standard:
+      daily_close: 8h
+      daily_open: 1h30m
+      daily_settlement: 10h
+      trading_breaks:
+      - - 4h
+        - 5h
+  symbol: HKSE_OTC
   trading_days: weekdays
   trading_timezone: Asia/Hong_Kong
 ICE_LIFFE:
@@ -694,13 +712,13 @@ LSE_OTC:
   display_name: OTC London Stock Exchange
   market_times:
     dst:
-      daily_close: 19h
-      daily_open: -1h
+      daily_close: 20h
+      daily_open: 6h
       daily_settlement: 22h
     partial_trading: {}
     standard:
-      daily_close: 20h
-      daily_open: 0s
+      daily_close: 21h
+      daily_open: 7h
       daily_settlement: 23h
   symbol: LSE_OTC
   trading_days: weekdays
@@ -769,6 +787,23 @@ NASDAQ:
       daily_open: 14h30m
       daily_settlement: 23h59m59s
   symbol: NASDAQ
+  trading_days: weekdays
+  trading_timezone: America/New_York
+NASDAQ_OTC:
+  currency: USD
+  delay_amount: '0'
+  display_name: NASDAQ_OTC
+  market_times:
+    dst:
+      daily_close: 20h
+      daily_open: 6h
+      daily_settlement: 22h
+    partial_trading: {}
+    standard:
+      daily_close: 21h
+      daily_open: 7h
+      daily_settlement: 23h
+  symbol: NASDAQ_OTC
   trading_days: weekdays
   trading_timezone: America/New_York
 NASDAQ_INDEX:
@@ -850,12 +885,12 @@ NYSE_OTC:
   market_times:
     dst:
       daily_close: 20h
-      daily_open: -1h
+      daily_open: 6h
       daily_settlement: 22h
     partial_trading: {}
     standard:
       daily_close: 21h
-      daily_open: 0s
+      daily_open: 7h
       daily_settlement: 23h
   symbol: NYSE_OTC
   trading_days: weekdays
@@ -888,12 +923,12 @@ NYSE_SPC_OTC:
   market_times:
     dst:
       daily_close: 20h
-      daily_open: -1h
+      daily_open: 6h
       daily_settlement: 22h
     partial_trading: {}
     standard:
       daily_close: 21h
-      daily_open: 0s
+      daily_open: 7h
       daily_settlement: 23h
   symbol: NYSE_SPC_OTC
   trading_days: weekdays
@@ -1183,14 +1218,14 @@ STOXX_OTC:
   display_name: OTC STOXX Exchange
   market_times:
     dst:
-      daily_close: 20h
-      daily_open: 6h
-      daily_settlement: 22h
+      daily_close: 19h
+      daily_open: 8h
+      daily_settlement: 21h
     partial_trading: {}
     standard:
-      daily_close: 21h
-      daily_open: 7h
-      daily_settlement: 23h
+      daily_close: 20h
+      daily_open: 9h
+      daily_settlement: 22h
   symbol: STOXX_OTC
   trading_days: weekdays
   trading_timezone: Europe/Berlin
@@ -1209,6 +1244,23 @@ SWX:
       daily_open: 8h
       daily_settlement: 19h20m
   symbol: SWX
+  trading_days: weekdays
+  trading_timezone: Europe/Zurich
+SWX_OTC:
+  currency: CHF
+  delay_amount: '0'
+  display_name: OTC Swiss Exchange
+  market_times:
+    dst:
+      daily_close: 16h
+      daily_open: 7h
+      daily_settlement: 18h
+    partial_trading: {}
+    standard:
+      daily_close: 17h
+      daily_open: 8h
+      daily_settlement: 19h
+  symbol: SWX_OTC
   trading_days: weekdays
   trading_timezone: Europe/Zurich
 SYNEURONEXT:
@@ -1441,7 +1493,7 @@ TSE_OTC:
   market_times:
     dst:
       daily_close: 20h
-      daily_open: -1h
+      daily_open: 0s
       daily_settlement: 22h
     partial_trading: {}
     standard:

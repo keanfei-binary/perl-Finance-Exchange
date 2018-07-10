@@ -129,16 +129,16 @@ subtest 'market_times' => sub {
         },
         'ASX_OTC' => {
             dst => {
-                daily_close      => 21 * 3600,
-                daily_open       => -1 * 3600,
-                daily_settlement => 23 * 3600,
-                trading_breaks   => [5 * 3600 + 30 * 60, 6 * 3600 + 10 * 60],
+                daily_close      => 19 * 3600,
+                daily_open       => 0 * 3600,
+                daily_settlement => 21 * 3600,
+                trading_breaks   => [5 * 3600 + 30 * 60, 6 * 3600 + 30 * 60],
             },
             standard => {
                 daily_close      => 20 * 3600,
-                daily_open       => -2 * 3600,
+                daily_open       => 0 * 3600,
                 daily_settlement => 22 * 3600,
-                trading_breaks   => [4 * 3600 + 30 * 60, 5 * 3600 + 10 * 60],
+                trading_breaks   => [6 * 3600 + 30 * 60, 7 * 3600 + 30 * 60],
             },
         },
 
