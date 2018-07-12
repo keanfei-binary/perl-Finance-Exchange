@@ -1219,12 +1219,12 @@ STOXX_OTC:
   market_times:
     dst:
       daily_close: 19h
-      daily_open: 8h
+      daily_open: 6h
       daily_settlement: 21h
     partial_trading: {}
     standard:
       daily_close: 20h
-      daily_open: 9h
+      daily_open: 7h
       daily_settlement: 22h
   symbol: STOXX_OTC
   trading_days: weekdays
@@ -1491,15 +1491,11 @@ TSE_OTC:
   delay_amount: '0'
   display_name: OTC Tokyo Stock Exchange
   market_times:
-    dst:
+    partial_trading: {}
+    standard:
       daily_close: 20h
       daily_open: 0s
       daily_settlement: 22h
-    partial_trading: {}
-    standard:
-      daily_close: 21h
-      daily_open: 0s
-      daily_settlement: 23h
   symbol: TSE_OTC
   trading_days: weekdays
   trading_timezone: Asia/Tokyo
