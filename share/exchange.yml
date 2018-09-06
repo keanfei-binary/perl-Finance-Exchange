@@ -398,14 +398,14 @@ EURONEXT_OTC:
   display_name: OTC EURONEXT
   market_times:
     dst:
-      daily_close: 20h
+      daily_close: 19h30m
       daily_open: 6h
-      daily_settlement: 22h
+      daily_settlement: 21h30m
     partial_trading: {}
     standard:
-      daily_close: 21h
+      daily_close: 20h30m
       daily_open: 7h
-      daily_settlement: 23h
+      daily_settlement: 22h30m
   symbol: EURONEXT_OTC
   trading_days: weekdays
   trading_timezone: Europe/Paris
@@ -479,14 +479,14 @@ FSE_OTC:
   display_name: OTC Frankfurt Stock Exchange
   market_times:
     dst:
-      daily_close: 20h
+      daily_close: 19h30m
       daily_open: 6h
-      daily_settlement: 22h
+      daily_settlement: 21h30m
     partial_trading: {}
     standard:
-      daily_close: 21h
+      daily_close: 20h30m
       daily_open: 7h
-      daily_settlement: 23h
+      daily_settlement: 22h30m
   symbol: FSE_OTC
   trading_days: weekdays
   trading_timezone: Europe/Berlin
