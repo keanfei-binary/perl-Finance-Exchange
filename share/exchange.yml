@@ -1514,15 +1514,3 @@ TSE_S:
   symbol: TSE_S
   trading_days: weekdays
   trading_timezone: Asia/Tokyo
-CRYPTOCURRENCY:
-  delay_amount: '0'
-  display_name: Cryptocurrency
-  market_times:
-    partial_trading: {}
-    standard:
-      daily_close: 23h59m59s
-      daily_open: 0s
-      daily_settlement: 23h59m59s
-  symbol: CRYPTOCURRENCY
-  trading_days: everyday
-  trading_timezone: UTC
