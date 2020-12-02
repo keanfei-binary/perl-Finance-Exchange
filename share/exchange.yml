@@ -428,13 +428,23 @@ METAL:
     partial_trading:
       standard_close: 16h30m
       standard_open: 0s
+    dst:
+      daily_close: 23h59m59s
+      daily_open: 0s
+      daily_settlement: 23h59m59s
+      trading_breaks:
+      - - 21h
+        - 22h
     standard:
       daily_close: 23h59m59s
       daily_open: 0s
       daily_settlement: 23h59m59s
+      trading_breaks:
+      - - 22h
+        - 23h
   symbol: METAL
   trading_days: weekdays
-  trading_timezone: UTC
+  trading_timezone: America/New_York
 FS:
   currency: GBP
   delay_amount: '1440'
