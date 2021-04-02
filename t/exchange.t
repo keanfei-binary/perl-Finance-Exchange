@@ -8,15 +8,15 @@ use Test::FailWarnings;
 use Finance::Exchange;
 
 my @exchanges = (
-    'ICE_LIFFE',    'EEI_PA',      'BIS',         'NYSE_SPC',        'EGX',         'KRX',    'SYNFSE', 'BSE',
-    'HKF',          'BOVESPA',     'SWX',         'TRSE',            'EURONEXT',    'SYNTSE', 'RANDOM', 'TSE_S',
-    'TSE',          'OSLO',        'LSE',         'SES',             'SYNLSE',      'EEI_BU', 'SFE',    'SAS',
-    'EUREX',        'SYNNYSE_SPC', 'ISE',         'NSE',             'KSE',         'STOXX',  'SGX',    'EEI_AM',
-    'BI',           'FSE',         'MEFF',        'ASX_S',           'SYNEURONEXT', 'NYSE',   'MOF',    'BMF',
-    'NASDAQ_INDEX', 'EEI_LI',      'CME',         'ASX',             'OMX',         'FOREX',  'DFM',    'ADS',
-    'SYNSTOXX',     'SZSE',        'SYNSWX',      'RTS',             'JSC',         'METAL',  'OSE',    'FS',
-    'NZSE',         'ODLS',        'SP_GLOBAL',   'JSE',             'NASDAQ',      'BM',     'HKSE',   'MICEX',
-    'SYNNYSE_DJI',  'SP_GSCI',     'EUREX_SWISS', 'RANDOM_NOCTURNE', 'IDM',         'SSE',
+    'ICE_LIFFE',    'EEI_PA',      'BIS',         'NYSE_SPC',        'EGX',         'KRX',    'SYNFSE',  'BSE',
+    'HKF',          'BOVESPA',     'SWX',         'TRSE',            'EURONEXT',    'SYNTSE', 'RANDOM',  'TSE_S',
+    'TSE',          'OSLO',        'LSE',         'SES',             'SYNLSE',      'EEI_BU', 'SFE',     'SAS',
+    'EUREX',        'SYNNYSE_SPC', 'ISE',         'NSE',             'KSE',         'STOXX',  'SGX',     'EEI_AM',
+    'BI',           'FSE',         'MEFF',        'ASX_S',           'SYNEURONEXT', 'NYSE',   'MOF',     'BMF',
+    'NASDAQ_INDEX', 'EEI_LI',      'CME',         'ASX',             'OMX',         'FOREX',  'DFM',     'ADS',
+    'SYNSTOXX',     'SZSE',        'SYNSWX',      'RTS',             'JSC',         'METAL',  'OSE',     'FS',
+    'NZSE',         'ODLS',        'SP_GLOBAL',   'JSE',             'NASDAQ',      'BM',     'HKSE',    'MICEX',
+    'SYNNYSE_DJI',  'SP_GSCI',     'EUREX_SWISS', 'RANDOM_NOCTURNE', 'IDM',         'SSE',    'OIL_OTC', 'BRENT_OTC'
 );
 subtest 'exchange object construction' => sub {
     foreach my $exchange_symbol (@exchanges) {
@@ -30,7 +30,7 @@ subtest 'trading_days' => sub {
     my $expected = {
         everyday     => ['RANDOM', 'RANDOM_NOCTURNE'],
         sun_thru_thu => ['EGX',    'SAS', 'KRX', 'DFM', 'ADS'],
-        weekdays => [
+        weekdays     => [
             'ICE_LIFFE',   'EEI_PA', 'BIS',         'NYSE_SPC', 'KRX',          'SYNFSE', 'BSE',         'HKF',
             'BOVESPA',     'SWX',    'TRSE',        'EURONEXT', 'SYNTSE',       'TSE_S',  'TSE',         'OSLO',
             'LSE',         'SES',    'SYNLSE',      'EEI_BU',   'SFE',          'EUREX',  'SYNNYSE_SPC', 'ISE',
@@ -38,7 +38,8 @@ subtest 'trading_days' => sub {
             'SYNEURONEXT', 'NYSE',   'MOF',         'BMF',      'NASDAQ_INDEX', 'EEI_LI', 'CME',         'ASX',
             'OMX',         'FOREX',  'SYNSTOXX',    'SZSE',     'SYNSWX',       'RTS',    'JSC',         'METAL',
             'OSE',         'FS',     'NZSE',        'ODLS',     'SP_GLOBAL',    'JSE',    'NASDAQ',      'BM',
-            'HKSE',        'MICEX',  'SYNNYSE_DJI', 'SP_GSCI',  'EUREX_SWISS',  'IDM',    'SSE'
+            'HKSE',        'MICEX',  'SYNNYSE_DJI', 'SP_GSCI',  'EUREX_SWISS',  'IDM',    'SSE',         'OIL_OTC',
+            'BRENT_OTC'
         ],
     };
 
@@ -61,7 +62,7 @@ subtest 'exchange currency' => sub {
         'AUD' => ['SFE',     'ASX_S', 'ASX'],
         'BRL' => ['BOVESPA', 'BMF'],
         'CAD' => ['TRSE'],
-        'CHF' => ['SWX', 'SYNSWX', 'EUREX_SWISS'],
+        'CHF' => ['SWX',  'SYNSWX', 'EUREX_SWISS'],
         'CNY' => ['SZSE', 'SSE'],
         'EGP' => ['EGX'],
         'EUR' => [
@@ -69,7 +70,7 @@ subtest 'exchange currency' => sub {
             'BI',     'FSE',    'MEFF',     'SYNEURONEXT', 'EEI_LI', 'SYNSTOXX', 'BM',    'IDM'
         ],
         'GBP' => ['ICE_LIFFE', 'LSE', 'SYNLSE', 'FS'],
-        'HKD' => ['HKF',       'HKSE'],
+        'HKD' => ['HKF', 'HKSE'],
         'IDR' => ['JSC'],
         'INR' => ['BSE',    'NSE'],
         'JPY' => ['SYNTSE', 'TSE_S', 'TSE', 'OSE'],
@@ -82,7 +83,10 @@ subtest 'exchange currency' => sub {
         'SEK' => ['OMX'],
         'SGD' => ['SES', 'SGX'],
         'TRY' => ['BIS'],
-        'USD' => ['NYSE_SPC', 'SYNNYSE_SPC', 'NYSE', 'MOF', 'NASDAQ_INDEX', 'CME', 'RTS', 'ODLS', 'SP_GLOBAL', 'NASDAQ', 'SYNNYSE_DJI', 'SP_GSCI'],
+        'USD' => [
+            'NYSE_SPC',  'SYNNYSE_SPC', 'NYSE',        'MOF',     'NASDAQ_INDEX', 'CME', 'RTS', 'ODLS',
+            'SP_GLOBAL', 'NASDAQ',      'SYNNYSE_DJI', 'SP_GSCI', 'OIL_OTC',      'BRENT_OTC'
+        ],
         'ZAR' => ['JSE'],
     };
     my %undef_currency_exchanges = (
@@ -95,11 +99,7 @@ subtest 'exchange currency' => sub {
     foreach my $ex (map { Finance::Exchange->create_exchange($_) } @exchanges) {
         if (not $ex->currency and exists $undef_currency_exchanges{$ex->symbol}) {
             pass('Currency is undefined for ' . $ex->symbol);
-        } elsif (
-            grep {
-                $ex->symbol eq $_
-            } @{$expected->{$ex->currency}})
-        {
+        } elsif (grep { $ex->symbol eq $_ } @{$expected->{$ex->currency}}) {
             pass('currency matched for ' . $ex->symbol);
         } else {
             fail('Wrong currency found for ' . $ex->symbol);

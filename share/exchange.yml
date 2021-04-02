@@ -193,6 +193,22 @@ BOVESPA:
   symbol: BOVESPA
   trading_days: weekdays
   trading_timezone: America/Sao_Paulo
+BRENT_OTC:
+  currency: USD
+  delay_amount: '0'
+  display_name: OTC BRENT EXCHANGE
+  market_times:
+    dst:
+      daily_close: 21h
+      daily_open: 0
+      daily_settlement: 23h59m59s
+    standard:
+      daily_close: 22h
+      daily_open: 1h
+      daily_settlement: 23h59m59s
+  symbol: BRENT_OTC
+  trading_days: weekdays
+  trading_timezone: UTC
 BSE:
   currency: INR
   delay_amount: '10'
@@ -985,6 +1001,30 @@ ODLS:
   symbol: ODLS
   trading_days: weekdays
   trading_timezone: Europe/London
+OIL_OTC:
+  currency: USD
+  delay_amount: '0'
+  display_name: OTC Oil Exchange
+  market_times:
+    dst:
+      daily_close: 24h
+      daily_open: 0
+      daily_settlement: 23h59m59s
+      day_of_week_extended_trading_breaks: 5
+      trading_breaks:
+      - - 21h - 22h
+        - 21h - 24h
+    standard:
+      daily_close: 24h
+      daily_open: 0
+      daily_settlement: 23h59m59s
+      day_of_week_extended_trading_breaks: 5
+      trading_breaks:
+      - - 22h - 23h
+        - 22h - 24h
+  symbol: OIL_OTC
+  trading_days: weekdays
+  trading_timezone: UTC
 OMX:
   currency: SEK
   delay_amount: '15'
